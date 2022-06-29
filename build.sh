@@ -14,6 +14,9 @@ export INSTALL_PATH
 build() {
 	echo "Makeing $1"
 	cd ./$1
+	if [ -d $BUILD_DIR ]; then
+		rm -Rf $BUILD_DIR
+	fi
 	conan install . --install-folder $BUILD_DIR --profile $PROFILE -b missing
 	conan build . --build-folder $BUILD_DIR
 	cd ..
@@ -50,8 +53,16 @@ if [ -d $APPS_DIR ]; then
 	APPS=`ls $APPS_DIR`
 fi
 
+if [ $1 ]; then 
+	if [ -f $1 ]; then
+		echo "Found conan profile file"
+		PROFILE=`readlink -f $1`
+	else
+		echo "Not Found profile file"
+	fi
+fi
 
-
+echo "Build with profile $PROFILE"
 
 build_lib
 build_app
