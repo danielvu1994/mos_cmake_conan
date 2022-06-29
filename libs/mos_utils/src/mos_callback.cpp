@@ -1,6 +1,8 @@
-#include "mos_utils/mos_callback.h"
+#include <iostream>
 #include "my_print/print_result.h"
+#include "mos_utils/mos_callback.h"
 #include "mosquitto.h"
+using namespace std;
 
 void print_wrapper(std::string msg) {
         print_result(msg);
@@ -8,7 +10,7 @@ void print_wrapper(std::string msg) {
 
 void my_log_callback(struct mosquitto *mosq, void * obj, int level, const char * msg) {
         //Ignore level, just print it
-        cout<<" Error: level:" << level <<" msg: " << msg << endl;
+        cout<<" Level:" << level <<" msg: " << msg << endl;
 }
 
 void my_connect_callback(struct mosquitto *mosq, void * obj, int rc) {
@@ -21,7 +23,7 @@ void my_connect_callback(struct mosquitto *mosq, void * obj, int rc) {
 }
 
 void my_message_callback(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg) {
-        cout << "New message with topic: " << msg->topic << " msg: " << (char *) msg->payloa << endl;
+        cout << "New message with topic: " << msg->topic << " msg: " << (char *) msg->payload<< endl;
 }
 
 void my_publish_callback (struct mosquitto * mosq, void * obj, int mid) {

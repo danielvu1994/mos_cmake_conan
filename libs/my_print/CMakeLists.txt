@@ -14,9 +14,7 @@ FILE(GLOB MySources "src/*.cpp")
 add_library(my_print SHARED ${MySources})
 
 #target_include_directories(my_print PUBLIC include)
-target_include_directories(my_print PUBLIC
-$<INSTALL_INTERFACE:include>
-$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+target_include_directories(my_print PUBLIC $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 target_link_libraries(my_print PUBLIC ${CONAN_LIBS})
 
