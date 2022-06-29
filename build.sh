@@ -6,28 +6,30 @@ APPS_DIR=$CUR_DIR/apps
 LIBS=
 APPS=
 INSTALL_PATH=$CUR_DIR/build_dir
+PROFILE=default
+BUILD_DIR=build
 
 export INSTALL_PATH
 
 build() {
 	echo "Makeing $1"
 	cd ./$1
-	if [ ! -d build ]; then
-		mkdir build
-	fi
-	cd build
-       	conan install ..
-       	cmake .. && make &&  make install ..
-	cd ../..
+	conan install . --install-folder $BUILD_DIR --profile $PROFILE -b missing
+	conan build . --build-folder $BUILD_DIR
+	cd ..
 }
 
 build_lib() {
-	echo "List of libs: $LIBS"
+	#echo "List of libs: $LIBS"
 	cd $LIBS_DIR
-	for LIB in $LIBS
-	do
-		build $LIB
-	done
+	#for LIB in $LIBS
+	#do
+	#	build $LIB
+	#done
+
+	#Temporary not have autodetect dependencies so use this insted
+	build my_print
+	build mos_utils
 }
 
 build_app() {
@@ -41,7 +43,6 @@ build_app() {
 #Get libs list
 if [ -d $LIBS_DIR ]; then
 	LIBS=`ls $LIBS_DIR`
-	echo "Hehe"
 fi
 
 #Get apps list
@@ -49,7 +50,9 @@ if [ -d $APPS_DIR ]; then
 	APPS=`ls $APPS_DIR`
 fi
 
-echo $LIST_LIBS
+
+
 
 build_lib
 build_app
+cd $CUR_DIR
