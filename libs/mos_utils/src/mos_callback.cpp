@@ -8,22 +8,22 @@ void print_wrapper(std::string msg) {
 
 void my_log_callback(struct mosquitto *mosq, void * obj, int level, const char * msg) {
         //Ignore level, just print it
-        fprintf(stderr, "level: %d, msg: %s \n", level, msg);
+        cout<<" Error: level:" << level <<" msg: " << msg << endl;
 }
 
 void my_connect_callback(struct mosquitto *mosq, void * obj, int rc) {
         if(rc !=0) {
-                fprintf(stderr, "Connection failed, return code = %d \n", rc);
+                cout <<" Error: Connection failed, return code = "<< rc << endl;
         }
 
-        fprintf(stderr, "Connection success! Subscribe to test/topic\n");
+        cout <<"Connection success! Subscribe to test/topic\n";
         mosquitto_subscribe(mosq, NULL, "test/topic", 0);
 }
 
 void my_message_callback(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg) {
-        fprintf(stderr, "New message with topic %s: %s\n", msg->topic, (char *) msg->payload);
+        cout << "New message with topic: " << msg->topic << " msg: " << (char *) msg->payloa << endl;
 }
 
 void my_publish_callback (struct mosquitto * mosq, void * obj, int mid) {
-        fprintf(stderr, "message id %d\n", mid);
+        cout<<"message id:" << mid <<endl;
 }

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "mosquitto.h"
 #include "mos_utils/mos_callback.h"
 

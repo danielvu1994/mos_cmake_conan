@@ -6,7 +6,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 #include_directories(${SampleProject_SOURCE_DIR}/my_print/inc)
-find_package(my_print REQUIRED PATHS $ENV{INSTALL_PATH}")
+find_package(my_print REQUIRED PATHS $ENV{INSTALL_PATH})
 set(CMAKE_INSTALL_RPATH $ENV{INSTALL_PATH})
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
