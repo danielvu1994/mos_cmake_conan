@@ -3,6 +3,12 @@ conan remote add daniel_conan_server https://danielvu1994.jfrog.io/artifactory/a
 
 conan user -p AKCp8mZTDwoPMupqcW86hqJns1CRFuwJeJDmg3xzPwsZLA25FdpjfvcKwT8HzADNvu8SozJBU -r daniel_conan_server vulinhdam1994@gmail.com
 
+#Adding conan revison to conan conf
+vi ~/.conan/conan.conf
+
+[general]
+revisions_enable=1
+
 # 2. Or install in local conan only those libs
 # You can skipp this step if config with step 1
 cd libs/my_print; conan create . daniel/sample
@@ -12,7 +18,7 @@ cd ../..
 #3.Install mos_client as conan package
 cd apps/mos_client
 
-conan create . test/demo
+conan create . test/demo -b missing
 
 #Or run with relative path conan profile for cross compiler
 conan create . test/demo --profile ../../profiles/linux_aarch64 -b missing
