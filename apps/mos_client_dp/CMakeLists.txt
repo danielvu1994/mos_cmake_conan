@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 
 project(SampleApp VERSION 1.0.0)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include(build/conanbuildinfo.cmake)
 conan_basic_setup()
 
 set(CMAKE_INSTALL_RPATH ${CONAN_LIB_DIRS})

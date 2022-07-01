@@ -1,0 +1,1 @@
+/home/daniel/cmake/sample_ativity/build_dir/bin/mos_client

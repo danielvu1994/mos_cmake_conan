@@ -1,0 +1,7 @@
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/install/strip.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/edit_cache.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/mos_client.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/install.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/rebuild_cache.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/list_install_components.dir
+/home/daniel/cmake/sample_ativity/apps/mos_client_dp/build/CMakeFiles/install/local.dir
